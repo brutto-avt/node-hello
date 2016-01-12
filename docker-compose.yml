@@ -1,15 +1,24 @@
 node1:
+  hostname: node1
+  volumes:
+    - ./src:/src
   build: .
   expose:
     - 80
 
 node2:
+  hostname: node2
+  volumes:
+    - ./src:/src
   build: .
   expose:
     - 80
 
 node3:
+  hostname: node3
   build: .
+  volumes:
+    - ./src:/src
   expose:
     - 80
 
