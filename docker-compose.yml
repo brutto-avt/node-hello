@@ -3,6 +3,9 @@ node1:
   volumes:
     - ./src:/src
   build: .
+  restart: unless-stopped
+  ports:
+    - "8080:80"
   expose:
     - 80
 
@@ -11,14 +14,20 @@ node2:
   volumes:
     - ./src:/src
   build: .
+  restart: unless-stopped
+  ports:
+    - "8081:80"
   expose:
     - 80
 
 node3:
-  hostname: node3
-  build: .
+  hostname: node3  
   volumes:
     - ./src:/src
+  build: .
+  restart: unless-stopped
+  ports:
+    - "8082:80"
   expose:
     - 80
 
