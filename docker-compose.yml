@@ -1,0 +1,29 @@
+node1:
+  build: .
+  expose:
+    - 80
+
+node2:
+  build: .
+  expose:
+    - 80
+
+node3:
+  build: .
+  expose:
+    - 80
+
+haproxy:
+  image: eeacms/haproxy
+  links:
+    - node1
+    - node2
+    - node3
+  volumes:
+    - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+  ports:
+    - "80:80"
+    - "1936:1936"
+  expose:
+    - "80"
+    - "1936"
